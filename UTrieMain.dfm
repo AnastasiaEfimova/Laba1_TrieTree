@@ -1,6 +1,6 @@
 object frmMain: TfrmMain
-  Left = 926
-  Top = 252
+  Left = 688
+  Top = 267
   BorderStyle = bsSingle
   Caption = 'Work with trie tree'
   ClientHeight = 423
@@ -199,13 +199,9 @@ object frmMain: TfrmMain
         Action = ActClear
       end
     end
-    object Process1: TMenuItem
-      Caption = 'Process'
-      object MnTask: TMenuItem
-        Action = ActTask
-        Caption = 'Task...'
-        Hint = #1042#1099#1087#1086#1083#1085#1080#1090#1100' '#1079#1072#1076#1072#1095#1091
-      end
+    object task: TMenuItem
+      Caption = 'Task'
+      OnClick = taskClick
     end
   end
   object ActList: TActionList
@@ -272,7 +268,6 @@ object frmMain: TfrmMain
       ShortCut = 16474
     end
     object ActTask: TAction
-      Category = 'Process'
       Caption = 'Task'
       ShortCut = 16468
     end
