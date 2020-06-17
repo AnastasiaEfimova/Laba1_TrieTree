@@ -247,12 +247,11 @@ end;
 
 procedure TfrmMain.taskClick(Sender: TObject);
 begin
-  if openDialog.Execute and CanCloseFile then
-    begin
-      TrTree:=TTrieGUI.Create(tv);
-      if not TrTree.LoadFromFile(openDialog.FileName) then
-        MessageDlg('Error during file reading.',mtError,[mbOk],0);
-    end;
+  if (TrTree = nil) or (TrTree.IsEmpty) then
+    ShowMessage('Дерево пустое!')
+  else
+    ShowMessage('Слова в дереве:' + #13#10 + TrTree.GetString);
+
 end;
 
 end.

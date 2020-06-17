@@ -46,6 +46,7 @@ begin
     PrintAll(FTree.Items);
 end;
 
+
 function TTrieGUI.LoadFromFile(aFileName:string):boolean;
 begin
   Result:= inherited LoadFromFile(aFileName);

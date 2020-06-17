@@ -27,8 +27,6 @@ type
     MnFind: TMenuItem;
     MnDelete: TMenuItem;
     MnClear: TMenuItem;
-    Process1: TMenuItem;
-    MnTask: TMenuItem;
     ToolBar1: TToolBar;
     pnlMain: TPanel;
     lblMain: TLabel;
@@ -63,6 +61,7 @@ type
     ActSaveRes: TAction;
     ToolButton3: TToolButton;
     tv: TTreeView;
+    task: TMenuItem;
     procedure MnExitClick(Sender: TObject);
     procedure ActSaveExecute(Sender: TObject);
     procedure ActSaveAsExecute(Sender: TObject);
@@ -75,6 +74,7 @@ type
     procedure ActOpenExecute(Sender: TObject);
     procedure ActFindExecute(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure taskClick(Sender: TObject);
   private
     // Объектная переменная дерева, с которым будет производиться работа
     TrTree: TTrieGUI;
@@ -243,6 +243,16 @@ end;
 procedure TfrmMain.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   CanClose:=CanCloseFile;
+end;
+
+procedure TfrmMain.taskClick(Sender: TObject);
+begin
+  if openDialog.Execute and CanCloseFile then
+    begin
+      TrTree:=TTrieGUI.Create(tv);
+      if not TrTree.LoadFromFile(openDialog.FileName) then
+        MessageDlg('Error during file reading.',mtError,[mbOk],0);
+    end;
 end;
 
 end.

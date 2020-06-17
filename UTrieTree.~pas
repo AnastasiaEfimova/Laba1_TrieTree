@@ -22,7 +22,6 @@ type
     // Деструктор TrieTree
     destructor Destroy; override;
 
-    function GetString:string;
     // Проверка дерева на пустоту
     function IsEmpty: boolean;
     // Удаляет все эл-ты из дерева
@@ -60,10 +59,6 @@ begin
   inherited;
 end;
 
-function TTrieTree.GetString:string;
-begin
-  Result:= FRoot.GetString;
-end;
 // Проверка дерева на пустоту
 function TTrieTree.IsEmpty: boolean;
 begin
@@ -145,7 +140,7 @@ end;
 // Сохранить слова из дерева в файл
 procedure TTrieTree.SaveToFile(FileName: string);
 var
-  SL: TStrings;
+  SL:TStrings;
 begin
   SL:= TStringList.Create;
   if FRoot <> nil then
